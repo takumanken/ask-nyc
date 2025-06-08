@@ -104,7 +104,7 @@ def _build_metadata_clauses(definition: AggregationDefinition) -> str:
   , quantile_cont({measure_alias}, 0.25) over () as metadata_1Q_{measure_alias}
   , median({measure_alias}) over () as metadata_median_{measure_alias}
   , quantile_cont({measure_alias}, 0.75) over () as metadata_3Q_{measure_alias}
-  , stddev({measure_alias}) over () as metadata_stddev_{measure_alias}"""
+  , stddev(case when isinf({measure_alias}) then null else {measure_alias} end) over () as metadata_stddev_{measure_alias}"""
         
         # Add top/bottom entries with dimension values
         if dims:

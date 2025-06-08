@@ -163,7 +163,7 @@ def gemini_safe(fn):
         try:
             return await fn(*args, **kwargs)
 
-        except genai.errors.ApiError as err:
+        except genai.errors.APIError as err:
             logger = logging.getLogger('utils')
             logger.error(f"Gemini API error: {err}")
 

@@ -8,3 +8,5 @@ google-genai
 polars
 botocore
 boto3
+sodapy
+pytz
